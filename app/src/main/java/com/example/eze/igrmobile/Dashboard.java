@@ -1,7 +1,10 @@
 package com.example.eze.igrmobile;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -143,27 +146,18 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
         closeDrawer();
 
-        switch(item.getItemId()){
-            case R.id.dashboard:
-                Utility.dashboard(this);
-                //Toast.makeText(this, "clicked dashboard", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.mda:
-                Utility.mda(this);
-                //Toast.makeText(this, "clicked MdaActivity", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.pos:
-                Toast.makeText(this, "clicked pos", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.remittance:
-                Toast.makeText(this, "clicked Remittance", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.ebills:
-                Toast.makeText(this, "clicked ebills", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.logout:
-                Toast.makeText(this, "clicked logout", Toast.LENGTH_SHORT).show();
-                break;
+        if (item.getItemId() == R.id.logout){
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+            preferences.edit().clear().commit();
+
+            Intent i = new Intent(this, LoginActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+            startActivity(i);
+            finish();
+        }else{
+            Utility.draerableMenu(this, item);
         }
         return true;
     }
