@@ -21,6 +21,7 @@ public class MdaParser {
             JSONObject jsonObj = new JSONObject(content);
 
             JSONArray ar = jsonObj.getJSONArray("info");
+            System.out.println(ar.length());
             mdaList = new ArrayList<>();
 
             for (int i = 0; i < ar.length(); i++) {

@@ -18,13 +18,21 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.*;
 import com.example.eze.igrmobile.model.Mda;
@@ -36,21 +44,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MdaActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private List<Mda> mdaList;
+public class MdaActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
+
+
+    private RecyclerView recyclerView;
+    private LinearLayoutManager layoutManager;
+    private MyAdpter adpter;
+    public List<Mda> mdaList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mda);
 
-        setUpToolBarMenu();
-        setUpNavigationDrawerMenu();
-
         mdaList = new ArrayList<>();
 
+        setUpToolBarMenu();
+        setUpRecyclerView();
         pullData();
     }
 
@@ -58,43 +69,30 @@ public class MdaActivity extends AppCompatActivity implements NavigationView.OnN
         toolbar = (Toolbar) findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("MDA's");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
-    private void setUpNavigationDrawerMenu() {
-        navigationView = (NavigationView) findViewById(R.id.navigation_view);
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout1);
-
-        navigationView.setNavigationItemSelectedListener(MdaActivity.this);
-
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,
-                drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
-
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
-    }
 
     private void pullData() {
-        if (!isOnLine()){
+        if (!isOnLine()) {
             Toast.makeText(this, "Network isn't available", Toast.LENGTH_SHORT).show();
-        }else{
+        } else {
             makeCall();
         }
     }
 
     private void setUpRecyclerView() {
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-        MyAdpter myAdpter = new MyAdpter(this, mdaList);
-        recyclerView.setAdapter(myAdpter);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 
     private void makeCall() {
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-
         StringRequest request = new StringRequest(Request.Method.POST, Utility.MDA_URL,
 
                 new Response.Listener<String>() {
@@ -102,17 +100,29 @@ public class MdaActivity extends AppCompatActivity implements NavigationView.OnN
                     public void onResponse(String response) {
                         Toast.makeText(MdaActivity.this, response, Toast.LENGTH_SHORT).show();
                         mdaList = MdaParser.parseFeed(response);
-                        setUpRecyclerView();
-
+                        adpter = new MyAdpter(MdaActivity.this, mdaList);
+                        recyclerView.setAdapter(adpter);
                     }
                 },
 
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        onLoginFailDialog();
+                        if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                            onLoginFailDialog("Communication Error!");
+
+                        } else if (error instanceof AuthFailureError) {
+                            onLoginFailDialog("Authentication Error!");
+                        } else if (error instanceof ServerError) {
+                            onLoginFailDialog("Server Side Error!");
+                        } else if (error instanceof NetworkError) {
+                            onLoginFailDialog("Network Error!");
+                        } else if (error instanceof ParseError) {
+                            onLoginFailDialog("Parse Error!");
+                        }
+
                     }
-                }){
+                }) {
             //adding header param
 
             @Override
@@ -129,56 +139,28 @@ public class MdaActivity extends AppCompatActivity implements NavigationView.OnN
                 return headers;
             }
         };
-
         RequestQueue queue = com.android.volley.toolbox.Volley.newRequestQueue(this);
         queue.add(request);
     }
 
-    private void onLoginFailDialog() {
-        Toast.makeText(this, "Unable to get response", Toast.LENGTH_SHORT).show();
+    private void onLoginFailDialog(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
     private boolean isOnLine() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        if (netInfo != null && netInfo.isConnectedOrConnecting()){
+        if (netInfo != null && netInfo.isConnectedOrConnecting()) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        closeDrawer();
-
-        if (item.getItemId() == R.id.logout){
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-            preferences.edit().clear().commit();
-
-            Intent i = new Intent(this, LoginActivity.class);
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-            startActivity(i);
-            finish();
-        }else{
-            Utility.draerableMenu(this, item);
-        }
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
         return true;
     }
 
-    private void closeDrawer() {
-        drawerLayout.closeDrawer(GravityCompat.START);
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
-            closeDrawer();
-        }else{
-            super.onBackPressed();
-        }
-
-    }
 }
