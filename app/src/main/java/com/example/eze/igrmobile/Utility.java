@@ -14,6 +14,7 @@ import android.widget.Toast;
 public class Utility {
     public static final String LOGIN_URL ="http://igr.ercasng.com/api/igr_api_mobile";
     public static final String MDA_URL ="http://igr.ercasng.com/api/mda";
+    public static final String REMITTANCE_URL ="http://igr.ercasng.com/api/getremittancestatus";
 
     public static void dashboard(Context context){
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
@@ -35,6 +36,12 @@ public class Utility {
         Intent i = new Intent(context, MdaActivity.class);
         context.startActivity(i);
     }
+
+    public static void remittance(Context context){
+        Intent i = new Intent(context, Remittance.class);
+        context.startActivity(i);
+    }
+
     public static void draerableMenu(Context context, MenuItem item){
         switch(item.getItemId()){
             case R.id.dashboard:
@@ -49,7 +56,8 @@ public class Utility {
                 Toast.makeText(context, "clicked pos", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.remittance:
-                Toast.makeText(context, "clicked Remittance", Toast.LENGTH_SHORT).show();
+                Utility.remittance(context);
+                //Toast.makeText(context, "clicked Remittance", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.ebills:
                 Toast.makeText(context, "clicked ebills", Toast.LENGTH_SHORT).show();

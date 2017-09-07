@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.eze.igrmobile.model.Mda;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -60,9 +61,17 @@ public class MyAdpter extends RecyclerView.Adapter<MyAdpter.MyViewHolder> {
 
         public void setData(Mda mda, int position) {
             this.tab1.setText(mda.getName());
-            this.tab2.setText(mda.getAmount());
+            this.tab2.setText(numberFormat(mda.getAmount()));
             this.position = position;
             this.mda = mda;
+        }
+
+        private String numberFormat(String number){
+            double num = Double.parseDouble(number);
+            DecimalFormat money = new DecimalFormat("###,###,###,###");
+            String formattedText = "₦" + money.format(num);
+
+            return formattedText;
         }
     }
 }

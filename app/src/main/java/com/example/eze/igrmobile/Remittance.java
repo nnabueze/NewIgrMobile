@@ -1,30 +1,16 @@
 package com.example.eze.igrmobile;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkError;
 import com.android.volley.NoConnectionError;
 import com.android.volley.ParseError;
@@ -34,45 +20,48 @@ import com.android.volley.Response;
 import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.*;
-import com.example.eze.igrmobile.model.Mda;
-import com.example.eze.igrmobile.parser.AuthParser;
+import com.android.volley.toolbox.StringRequest;
+import com.example.eze.igrmobile.model.RemittanceModel;
 import com.example.eze.igrmobile.parser.MdaParser;
+import com.example.eze.igrmobile.parser.RemittnaceParser;
 
-import java.util.ArrayList;
+import java.text.DecimalFormat;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class MdaActivity extends AppCompatActivity {
+/**
+ * Created by EZE on 9/7/2017.
+ */
+
+public class Remittance extends AppCompatActivity {
     private Toolbar toolbar;
-
-
-    private RecyclerView recyclerView;
-    private LinearLayoutManager layoutManager;
-    private MyAdpter adpter;
-    public List<Mda> mdaList;
+    private TextView lastMonthRemitted, currentMonthRemitted, lastMonth, currentMonth;
+    private RemittanceModel remittanceModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mda);
-
-        mdaList = new ArrayList<>();
+        setContentView(R.layout.activity_remittance);
 
         setUpToolBarMenu();
-        setUpRecyclerView();
+        setTextView();
         pullData();
     }
 
     private void setUpToolBarMenu() {
         toolbar = (Toolbar) findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("MDA's");
+        getSupportActionBar().setTitle("Remittance");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
+    public void setTextView() {
+        lastMonthRemitted = (TextView) findViewById(R.id.lastMonth);
+        currentMonthRemitted = (TextView) findViewById(R.id.currentMonth);
+        lastMonth = (TextView) findViewById(R.id.yestarday);
+        currentMonth = (TextView) findViewById(R.id.today);
+    }
 
     private void pullData() {
         if (!isOnLine()) {
@@ -82,26 +71,15 @@ public class MdaActivity extends AppCompatActivity {
         }
     }
 
-    private void setUpRecyclerView() {
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-    }
-
     private void makeCall() {
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        StringRequest request = new StringRequest(Request.Method.POST, Utility.MDA_URL,
+        StringRequest request = new StringRequest(Request.Method.POST, Utility.REMITTANCE_URL,
 
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 //                        Toast.makeText(MdaActivity.this, response, Toast.LENGTH_SHORT).show();
-                        mdaList = MdaParser.parseFeed(response);
-                        adpter = new MyAdpter(MdaActivity.this, mdaList);
-                        recyclerView.setAdapter(adpter);
+                        parseRemittanceFeed(response);
                     }
                 },
 
@@ -143,9 +121,19 @@ public class MdaActivity extends AppCompatActivity {
         queue.add(request);
     }
 
+    private void parseRemittanceFeed(String response) {
+        remittanceModel = RemittnaceParser.parseFeed(response);
+
+        lastMonthRemitted.setText(numberFormat(remittanceModel.getLastMonthRemite()));
+        currentMonthRemitted.setText(numberFormat(remittanceModel.getCurrentMonthRemite()));
+        lastMonth.setText(numberFormat(remittanceModel.getLastMonth()));
+        currentMonth.setText(numberFormat(remittanceModel.getCurrentMonth()));
+    }
+
     private void onLoginFailDialog(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
+
 
     private boolean isOnLine() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
@@ -163,4 +151,11 @@ public class MdaActivity extends AppCompatActivity {
         return true;
     }
 
+    private String numberFormat(String number){
+        double num = Double.parseDouble(number);
+        DecimalFormat money = new DecimalFormat("###,###,###,###");
+        String formattedText = "₦" + money.format(num);
+
+        return formattedText;
+    }
 }
