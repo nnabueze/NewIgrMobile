@@ -5,259 +5,266 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.eze.igrmobile.Remittance">
-
     <include
         android:id="@+id/toolBar"
         layout="@layout/toolbar" />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="200dp"
+        android:background="#BDBDBD"
         android:orientation="vertical"
-        android:layout_weight="10"
-        android:background="@color/white">
-        <Space
+        android:id="@+id/pieChart_layout">
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/chart"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4"
-            android:orientation="horizontal"
-            android:weightSum="10">
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="4"
-                android:background="@drawable/left_border"
-                android:weightSum="2"
-                android:layout_marginRight="0dp"
-                android:orientation="vertical"
-                android:elevation="5dp">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:text="****"
-                    android:id="@+id/lastMonth"
-                    android:textColor="@color/black"
-                    android:gravity="bottom|center"
-                    android:fontFamily="sans-serif-light"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:weightSum="2"
-                    android:layout_weight="1">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center|bottom"
-                        android:text="Remitted"
-                        android:textSize="10sp"
-                        android:textStyle="italic"
-                        android:textColor="@color/colorPrimary"
-                        android:fontFamily="sans-serif-light"/>
-                    <TextView
-                        android:id="@+id/lastMonthText"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="LAST MONTH"
-                        android:textColor="@color/black"
-                        android:gravity="center|top"
-                        android:textSize="14sp"
-                        android:fontFamily="sans-serif-light"/>
-
-
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="4"
-                android:background="@drawable/right_border"
-                android:weightSum="2"
-                android:layout_marginLeft="0dp"
-                android:orientation="vertical"
-                android:elevation="5dp">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:text="****"
-                    android:textColor="@color/black"
-                    android:gravity="bottom|center"
-                    android:id="@+id/currentMonth"
-                    android:fontFamily="sans-serif-light"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:weightSum="2"
-                    android:layout_weight="1">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center|bottom"
-                        android:text="Remitted"
-                        android:textSize="10sp"
-                        android:textStyle="italic"
-                        android:textColor="@color/colorPrimary"
-                        android:fontFamily="sans-serif-light"/>
-                    <TextView
-                        android:id="@+id/currentMonthRemittedText"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="CURRENT MONTH"
-                        android:textColor="@color/black"
-                        android:gravity="center|top"
-                        android:textSize="14sp"
-                        android:fontFamily="sans-serif-light"/>
-
-
-
-                </LinearLayout>
-
-            </LinearLayout>
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4"
-            android:orientation="horizontal"
-            android:weightSum="10">
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="4"
-                android:background="@drawable/top_right"
-                android:weightSum="2"
-                android:orientation="vertical"
-                android:elevation="5dp">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:text="****"
-                    android:textColor="@color/black"
-                    android:gravity="bottom|center"
-                    android:id="@+id/yestarday"
-                    android:fontFamily="sans-serif-light"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:weightSum="2"
-                    android:layout_weight="1">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center|bottom"
-                        android:text="Non-Remitted"
-                        android:textSize="10sp"
-                        android:textStyle="italic"
-                        android:textColor="@color/colorPrimary"
-                        android:fontFamily="sans-serif-light"/>
-                    <TextView
-                        android:id="@+id/lastMonthNonText"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="LAST MONTH"
-                        android:textColor="@color/black"
-                        android:gravity="center|top"
-                        android:textSize="14sp"
-                        android:fontFamily="sans-serif-light"/>
-
-
-
-                </LinearLayout>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="4"
-                android:background="@drawable/top_left"
-                android:weightSum="2"
-                android:orientation="vertical"
-                android:elevation="5dp">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:text="****"
-                    android:textColor="@color/black"
-                    android:gravity="bottom|center"
-                    android:id="@+id/today"
-                    android:fontFamily="sans-serif-light"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:weightSum="2"
-                    android:layout_weight="1">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:gravity="center|bottom"
-                        android:text="Non-Remitted"
-                        android:textSize="10sp"
-                        android:textStyle="italic"
-                        android:textColor="@color/colorPrimary"
-                        android:fontFamily="sans-serif-light"/>
-                    <TextView
-                        android:id="@+id/currentMonthNonText"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="CURRENT MONTH"
-                        android:textColor="@color/black"
-                        android:gravity="center|top"
-                        android:textSize="14sp"
-                        android:fontFamily="sans-serif-light"/>
-
-
-
-                </LinearLayout>
-
-            </LinearLayout>
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-        </LinearLayout>
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-
+            android:layout_height="match_parent" />
     </LinearLayout>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:orientation="horizontal"
+        android:weightSum="10">
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:background="@drawable/left_border"
+            android:weightSum="2"
+            android:layout_marginRight="0dp"
+            android:orientation="vertical"
+            android:elevation="5dp"
+            android:clickable="true"
+            android:id="@+id/lastMR">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="****"
+                android:id="@+id/lastMonth"
+                android:textColor="@color/black"
+                android:gravity="bottom|center"
+                android:fontFamily="sans-serif-light"/>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center|bottom"
+                    android:text="Remitted"
+                    android:textSize="10sp"
+                    android:textStyle="italic"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="sans-serif-light"/>
+                <TextView
+                    android:id="@+id/lastMonthText"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="LAST MONTH"
+                    android:textColor="@color/black"
+                    android:gravity="center|top"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif-light"/>
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:background="@drawable/right_border"
+            android:weightSum="2"
+            android:layout_marginLeft="0dp"
+            android:orientation="vertical"
+            android:elevation="5dp"
+            android:clickable="true"
+            android:id="@+id/currentMR">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="****"
+                android:textColor="@color/black"
+                android:gravity="bottom|center"
+                android:id="@+id/currentMonth"
+                android:fontFamily="sans-serif-light"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center|bottom"
+                    android:text="Remitted"
+                    android:textSize="10sp"
+                    android:textStyle="italic"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="sans-serif-light"/>
+                <TextView
+                    android:id="@+id/currentMonthRemittedText"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="CURRENT MONTH"
+                    android:textColor="@color/black"
+                    android:gravity="center|top"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif-light"/>
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:orientation="horizontal"
+        android:weightSum="10">
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:background="@drawable/top_right"
+            android:weightSum="2"
+            android:orientation="vertical"
+            android:elevation="5dp"
+            android:clickable="true"
+            android:id="@+id/lastMU">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="****"
+                android:textColor="@color/black"
+                android:gravity="bottom|center"
+                android:id="@+id/yestarday"
+                android:fontFamily="sans-serif-light"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center|bottom"
+                    android:text="Non-Remitted"
+                    android:textSize="10sp"
+                    android:textStyle="italic"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="sans-serif-light"/>
+                <TextView
+                    android:id="@+id/lastMonthNonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="LAST MONTH"
+                    android:textColor="@color/black"
+                    android:gravity="center|top"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif-light"/>
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:background="@drawable/top_left"
+            android:weightSum="2"
+            android:orientation="vertical"
+            android:elevation="5dp"
+            android:clickable="true"
+            android:id="@+id/currentMU">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="****"
+                android:textColor="@color/black"
+                android:gravity="bottom|center"
+                android:id="@+id/today"
+                android:fontFamily="sans-serif-light"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center|bottom"
+                    android:text="Non-Remitted"
+                    android:textSize="10sp"
+                    android:textStyle="italic"
+                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="sans-serif-light"/>
+                <TextView
+                    android:id="@+id/currentMonthNonText"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="CURRENT MONTH"
+                    android:textColor="@color/black"
+                    android:gravity="center|top"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif-light"/>
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
 
 </LinearLayout>

@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,10 +24,15 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.eze.igrmobile.model.RemittanceModel;
-import com.example.eze.igrmobile.parser.MdaParser;
 import com.example.eze.igrmobile.parser.RemittnaceParser;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,6 +44,7 @@ public class Remittance extends AppCompatActivity {
     private Toolbar toolbar;
     private TextView lastMonthRemitted, currentMonthRemitted, lastMonth, currentMonth;
     private RemittanceModel remittanceModel;
+    private LinearLayout lastMR, currentMR, lastMU, currentMU;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +54,69 @@ public class Remittance extends AppCompatActivity {
         setUpToolBarMenu();
         setTextView();
         pullData();
+        buttonClick();
+    }
+
+    private void buttonClick() {
+        lastMR = (LinearLayout) findViewById(R.id.lastMR);
+        currentMR = (LinearLayout) findViewById(R.id.currentMR);
+        lastMU = (LinearLayout) findViewById(R.id.lastMU);
+        currentMU = (LinearLayout) findViewById(R.id.currentMU);
+
+        lastMR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(Remittance.this, "Details Unconstruction", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        currentMR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(Remittance.this, "Details Unconstruction", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        lastMU.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(Remittance.this, "Details Unconstruction", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        lastMU.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(Remittance.this, "Details Unconstruction", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void pieChatGraph() {
+        PieChart pieChart = (PieChart) findViewById(R.id.chart);
+
+        ArrayList<Entry> entries = new ArrayList<>();
+        entries.add(new Entry(Float.parseFloat(remittanceModel.getLastMonthRemite()), 0));
+        entries.add(new Entry(Float.parseFloat(remittanceModel.getCurrentMonthRemite()), 1));
+        entries.add(new Entry(Float.parseFloat(remittanceModel.getLastMonth()), 2));
+        entries.add(new Entry(Float.parseFloat(remittanceModel.getCurrentMonth()), 3));
+
+        PieDataSet dataset = new PieDataSet(entries, "");
+
+        ArrayList<String> labels = new ArrayList<String>();
+        labels.add("Last M R");
+        labels.add("Current M R");
+        labels.add("Last M U");
+        labels.add("Current M U");
+
+        PieData data = new PieData(labels, dataset);
+        dataset.setColors(ColorTemplate.COLORFUL_COLORS); //
+        pieChart.setDescription("Remittance Amount");
+        pieChart.setData(data);
+
+        pieChart.animateY(5000);
+
+        pieChart.saveToGallery("/sd/mychart.jpg", 85); // 85 is the quality of the image
     }
 
     private void setUpToolBarMenu() {
@@ -128,6 +199,8 @@ public class Remittance extends AppCompatActivity {
         currentMonthRemitted.setText(numberFormat(remittanceModel.getCurrentMonthRemite()));
         lastMonth.setText(numberFormat(remittanceModel.getLastMonth()));
         currentMonth.setText(numberFormat(remittanceModel.getCurrentMonth()));
+
+        pieChatGraph();
     }
 
     private void onLoginFailDialog(String msg) {
