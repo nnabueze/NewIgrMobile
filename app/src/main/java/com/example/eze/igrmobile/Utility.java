@@ -15,6 +15,7 @@ public class Utility {
     public static final String LOGIN_URL ="http://igr.ercasng.com/api/igr_api_mobile";
     public static final String MDA_URL ="http://igr.ercasng.com/api/mda";
     public static final String REMITTANCE_URL ="http://igr.ercasng.com/api/getremittancestatus";
+    public static final String POS_URL ="http://igr.ercasng.com/api/getPosCollection";
 
     public static void dashboard(Context context){
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
@@ -42,22 +43,24 @@ public class Utility {
         context.startActivity(i);
     }
 
+    public static void pos(Context context){
+        Intent i = new Intent(context, PosActivity.class);
+        context.startActivity(i);
+    }
+
     public static void draerableMenu(Context context, MenuItem item){
         switch(item.getItemId()){
             case R.id.dashboard:
                 Utility.dashboard(context);
-                //Toast.makeText(this, "clicked dashboard", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.mda:
                 Utility.mda(context);
-                //Toast.makeText(this, "clicked MdaActivity", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.pos:
-                Toast.makeText(context, "clicked pos", Toast.LENGTH_SHORT).show();
+                Utility.pos(context);
                 break;
             case R.id.remittance:
                 Utility.remittance(context);
-                //Toast.makeText(context, "clicked Remittance", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.ebills:
                 Toast.makeText(context, "clicked ebills", Toast.LENGTH_SHORT).show();

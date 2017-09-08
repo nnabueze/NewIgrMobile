@@ -19,8 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".Dashboard" />
-        <activity android:name=".MdaActivity"></activity>
-        <activity android:name=".Remittance"></activity>
+        <activity android:name=".MdaActivity" />
+        <activity android:name=".Remittance" />
+        <activity android:name=".PosActivity"></activity>
     </application>
 
 </manifest>
