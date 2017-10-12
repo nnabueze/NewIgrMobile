@@ -176,8 +176,6 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         closeDrawer();
 
         if (item.getItemId() == R.id.logout){
-            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-            preferences.edit().clear().commit();
 
             logout();
         }else{
@@ -201,6 +199,9 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
     }
 
     public void logout(){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        preferences.edit().clear().commit();
+
         Intent i = new Intent(this, LoginActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

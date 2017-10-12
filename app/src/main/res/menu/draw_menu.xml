@@ -26,6 +26,21 @@
         android:id="@+id/ebills"
         android:icon="@drawable/border"/>
     <item
+        android:title="Station"
+        android:checkable="true"
+        android:id="@+id/station"
+        android:icon="@drawable/border"/>
+    <item
+        android:title="Invoice"
+        android:checkable="true"
+        android:id="@+id/invoice"
+        android:icon="@drawable/border"/>
+    <item
+        android:title="Report"
+        android:checkable="true"
+        android:id="@+id/report"
+        android:icon="@drawable/border"/>
+    <item
         android:title="Logout"
         android:checkable="true"
         android:id="@+id/logout"

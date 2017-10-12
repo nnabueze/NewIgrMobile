@@ -48,6 +48,16 @@ public class Utility {
         context.startActivity(i);
     }
 
+    public static void ebills(Context context){
+        Intent i = new Intent(context, EbillsActivity.class);
+        context.startActivity(i);
+    }
+
+    public static void report(Context context){
+        Intent i = new Intent(context, ReportActivity.class);
+        context.startActivity(i);
+    }
+
     public static void draerableMenu(Context context, MenuItem item){
         switch(item.getItemId()){
             case R.id.dashboard:
@@ -62,6 +72,8 @@ public class Utility {
             case R.id.remittance:
                 Utility.remittance(context);
                 break;
+            case R.id.report:
+                Utility.report(context);
             case R.id.ebills:
                 Toast.makeText(context, "clicked ebills", Toast.LENGTH_SHORT).show();
                 break;
