@@ -49,8 +49,8 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
     private Bundle extra;
 
     private int[] tabIcons = {
-            R.drawable.card,
-            R.drawable.account,
+            R.drawable.collection,
+            R.drawable.remittance,
     };
 
     @Override
@@ -116,6 +116,8 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
+        setupTabIcons();
     }
 
     private void setupTabIcons() {
