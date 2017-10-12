@@ -6,7 +6,6 @@
     android:layout_alignParentTop="true"
     android:background="@color/colorPrimary"
     app:theme="@style/AppTheme.Dark.Dialog"
-    android:elevation="5dp"
     app:popupTheme="@style/MyPopupMenu"
     android:orientation="vertical">
 

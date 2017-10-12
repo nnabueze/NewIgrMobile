@@ -53,6 +53,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 login();
+                /*Intent i = new Intent(LoginActivity.this, Dashboard.class);
+                startActivity(i);*/
+
             }
         });
     }

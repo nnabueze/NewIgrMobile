@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/IGRMobile.iml" filepath="$PROJECT_DIR$/IGRMobile.iml" />
+      <module fileurl="file://$PROJECT_DIR$/IGRMobileLatest.iml" filepath="$PROJECT_DIR$/IGRMobileLatest.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

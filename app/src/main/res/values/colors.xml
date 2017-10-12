@@ -4,12 +4,13 @@
     <color name="colorPrimaryDark">#F4511E</color>
     <color name="colorAccent">#e65100</color>
     <color name="loginBackground">#a9b0c3</color>
+    <color name="textColorPrimary">#FFFFFF</color>
 
 
     <color name="primary">#E43F3F</color>
     <color name="primary_dark">#E12929</color>
     <color name="primary_darker">#CC1D1D</color>
-    <color name="windowBackground" >#78909C</color>
+    <color name="windowBackground" >#FFFFFF</color>
     <color name="loginButton">#FF7043</color>
     <color name="highlight">#FFCCBC</color>
 

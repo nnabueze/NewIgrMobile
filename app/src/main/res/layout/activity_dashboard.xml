@@ -15,189 +15,32 @@
         android:orientation="vertical">
         <include layout="@layout/toolbar"
             android:id="@+id/toolBar"/>
-        <LinearLayout
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="#BDBDBD">
-            <com.jjoe64.graphview.GraphView
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="200dip"
-                android:id="@+id/graph" />
-        </LinearLayout>
-        <LinearLayout
+                android:layout_height="30dp"
+                android:background="?attr/colorPrimary"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabMode="fixed"
+                app:tabGravity="fill"/>
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="11"
-            android:background="@color/white">
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="4"
-                android:orientation="horizontal"
-                android:weightSum="11">
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    android:background="#EFEFEF"
-                    android:weightSum="2"
-                    android:orientation="vertical"
-                    android:elevation="5dp">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="****"
-                        android:id="@+id/lastMonth"
-                        android:textColor="@color/black"
-                        android:gravity="bottom|center"
-                        android:fontFamily="sans-serif-light"/>
-
-                    <TextView
-                        android:id="@+id/lastMonthText"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="LAST MONTH"
-                        android:textColor="@color/black"
-                        android:gravity="center"
-                        android:fontFamily="sans-serif-light"/>
-
-                </LinearLayout>
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    android:background="#EFEFEF"
-                    android:weightSum="2"
-                    android:orientation="vertical"
-                    android:elevation="5dp">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="****"
-                        android:textColor="@color/black"
-                        android:gravity="bottom|center"
-                        android:id="@+id/currentMonth"
-                        android:fontFamily="sans-serif-light"/>
-
-                    <TextView
-                        android:id="@+id/currentMonthText"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="CURRENT MONTH"
-                        android:textColor="@color/black"
-                        android:gravity="center"
-                        android:fontFamily="sans-serif-light"/>
-
-                </LinearLayout>
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
-            </LinearLayout>
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="4"
-                android:orientation="horizontal"
-                android:weightSum="11">
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    android:background="#EFEFEF"
-                    android:weightSum="2"
-                    android:orientation="vertical"
-                    android:elevation="5dp">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="****"
-                        android:textColor="@color/black"
-                        android:gravity="bottom|center"
-                        android:id="@+id/yestarday"
-                        android:fontFamily="sans-serif-light"/>
-
-                    <TextView
-                        android:id="@+id/yestardayText"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="YESTARDAY"
-                        android:textColor="@color/black"
-                        android:gravity="center"
-                        android:fontFamily="sans-serif-light"/>
-
-                </LinearLayout>
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    android:background="#EFEFEF"
-                    android:weightSum="2"
-                    android:orientation="vertical"
-                    android:elevation="5dp">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="****"
-                        android:textColor="@color/black"
-                        android:gravity="bottom|center"
-                        android:id="@+id/today"
-                        android:fontFamily="sans-serif-light"/>
-
-                    <TextView
-                        android:id="@+id/todayText"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="TODAY"
-                        android:textColor="@color/black"
-                        android:gravity="center"
-                        android:fontFamily="sans-serif-light"/>
-
-                </LinearLayout>
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
-            </LinearLayout>
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"/>
-
-        </LinearLayout>
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"  />
 
     </LinearLayout>
     <android.support.design.widget.NavigationView
