@@ -61,7 +61,7 @@
             android:id="@+id/tableView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            table:tableView_columnCount="4" />
+            table:tableView_columnCount="2" />
 
     </android.support.v4.widget.NestedScrollView>
 

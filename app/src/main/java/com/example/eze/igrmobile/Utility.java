@@ -64,16 +64,14 @@ public class Utility {
                 Utility.dashboard(context);
                 break;
             case R.id.mda:
-                Utility.mda(context);
+                //Utility.mda(context);
+                Utility.report(context);
                 break;
             case R.id.pos:
                 Utility.pos(context);
                 break;
             case R.id.remittance:
                 Utility.remittance(context);
-                break;
-            case R.id.report:
-                Utility.report(context);
                 break;
             case R.id.ebills:
                 Toast.makeText(context, "clicked ebills", Toast.LENGTH_SHORT).show();

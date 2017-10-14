@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void makeCall() {
-        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this, R.style.Theme_AppCompat_Dialog);
+        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this, R.style.Theme_AppCompat_Light_Dialog);
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
         StringRequest request = new StringRequest(Request.Method.POST, Utility.LOGIN_URL,
