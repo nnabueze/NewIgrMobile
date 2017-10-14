@@ -28,7 +28,7 @@
 
     </style>
 
-    <style name="AppTheme.Dark.Dialog" parent="Theme.AppCompat.Dialog">
+    <style name="AppTheme.Dark.Dialog" parent="Theme.AppCompat.Light.Dialog">
         <item name="colorAccent">@color/white</item>
         <item name="android:textColorPrimary">@color/white</item>
         <item name="android:textColorSecondary">@color/white</item>
@@ -36,7 +36,7 @@
     </style>
     <style name="MyPopupMenu" parent="ThemeOverlay.AppCompat.Light">
         <item name="android:background">@color/white</item>
-        <item name="android:textColorPrimary">@color/monsoon</item>
+        <item name="android:textColorPrimary">@color/white</item>
     </style>
 
 </resources>

@@ -74,6 +74,7 @@ public class Utility {
                 break;
             case R.id.report:
                 Utility.report(context);
+                break;
             case R.id.ebills:
                 Toast.makeText(context, "clicked ebills", Toast.LENGTH_SHORT).show();
                 break;

@@ -2,4 +2,6 @@
     <string name="app_name">IGRMobile</string>
     <string name="drawer_open">open</string>
     <string name="drawer_close">close</string>
+    <string name="action_logout">Logout</string>
+    <string name="action_settings">Settings</string>
 </resources>
