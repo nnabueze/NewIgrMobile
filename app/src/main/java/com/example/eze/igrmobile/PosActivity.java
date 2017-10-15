@@ -3,10 +3,13 @@ package com.example.eze.igrmobile;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.design.widget.AppBarLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,15 +26,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.eze.igrmobile.model.PosModel;
 import com.example.eze.igrmobile.parser.PosParser;
-import com.example.eze.igrmobile.parser.RemittnaceParser;
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,15 +36,62 @@ public class PosActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TextView lastMonth, currentMonth, yesterday, today;
     private PosModel posModel;
+    private Menu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pos);
 
-        setUpToolBarMenu();
-        setTextView();
+        setUpCollapsToolBar();
+       setTextView();
         pullData();
+    }
+    private void setUpCollapsToolBar() {
+        final Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        AppBarLayout mAppBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
+        mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            boolean isShow = false;
+            int scrollRange = -1;
+
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (scrollRange == -1) {
+                    scrollRange = appBarLayout.getTotalScrollRange();
+                }
+                if (scrollRange + verticalOffset == 0) {
+                    isShow = true;
+                    showOption(R.id.action_info);
+                } else if (isShow) {
+                    isShow = false;
+                    hideOption(R.id.action_info);
+                }
+            }
+        });
+    }
+
+    private void hideOption(int id) {
+        MenuItem item = menu.findItem(id);
+        item.setVisible(false);
+    }
+
+    private void showOption(int id) {
+        MenuItem item = menu.findItem(id);
+        item.setVisible(true);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        this.menu = menu;
+        getMenuInflater().inflate(R.menu.menu_scrolling, menu);
+//        hideOption(R.id.action_info);
+        return true;
     }
 
     private void setUpToolBarMenu() {
@@ -131,34 +175,7 @@ public class PosActivity extends AppCompatActivity {
         yesterday.setText(numberFormat(posModel.getYesterday()));
         today.setText(numberFormat(posModel.getToday()));
 
-        pieChatGraph();
-    }
 
-    private void pieChatGraph() {
-        PieChart pieChart = (PieChart) findViewById(R.id.chart);
-
-        ArrayList<Entry> entries = new ArrayList<>();
-        entries.add(new Entry(Float.parseFloat(posModel.getLastMonth()), 0));
-        entries.add(new Entry(Float.parseFloat(posModel.getCurrentMonth()), 1));
-        entries.add(new Entry(Float.parseFloat(posModel.getYesterday()), 2));
-        entries.add(new Entry(Float.parseFloat(posModel.getToday()), 3));
-
-        PieDataSet dataset = new PieDataSet(entries, "");
-
-        ArrayList<String> labels = new ArrayList<String>();
-        labels.add("Last Month");
-        labels.add("Current Month");
-        labels.add("Yesterday");
-        labels.add("Today");
-
-        PieData data = new PieData(labels, dataset);
-        dataset.setColors(ColorTemplate.COLORFUL_COLORS); //
-        pieChart.setDescription("Pos Collections");
-        pieChart.setData(data);
-
-        pieChart.animateY(5000);
-
-        pieChart.saveToGallery("/sd/mychart.jpg", 85); // 85 is the quality of the image
     }
 
     private void onLoginFailDialog(String msg) {
