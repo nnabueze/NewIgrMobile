@@ -16,6 +16,7 @@ public class Utility {
     public static final String MDA_URL ="http://igr.ercasng.com/api/mda";
     public static final String REMITTANCE_URL ="http://igr.ercasng.com/api/getremittancestatus";
     public static final String POS_URL ="http://igr.ercasng.com/api/getPosCollection";
+    public static final String EBILLS_URL ="http://igr.ercasng.com/api/getEbillsCollection";
 
     public static void dashboard(Context context){
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
@@ -74,7 +75,7 @@ public class Utility {
                 Utility.remittance(context);
                 break;
             case R.id.ebills:
-                Toast.makeText(context, "clicked ebills", Toast.LENGTH_SHORT).show();
+                Utility.ebills(context);
                 break;
         }
     }
