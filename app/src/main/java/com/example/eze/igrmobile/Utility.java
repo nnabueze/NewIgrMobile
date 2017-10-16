@@ -12,11 +12,12 @@ import android.widget.Toast;
  */
 
 public class Utility {
-    public static final String LOGIN_URL ="http://igr.ercasng.com/api/igr_api_mobile";
+    public static final String LOGIN_URL ="http://igr.ercasng.com/api/igr_mobile";
     public static final String MDA_URL ="http://igr.ercasng.com/api/mda";
-    public static final String REMITTANCE_URL ="http://igr.ercasng.com/api/getremittancestatus";
+    public static final String REMITTANCE_URL ="http://igr.ercasng.com/api/getremittance";
     public static final String POS_URL ="http://igr.ercasng.com/api/getPosCollection";
     public static final String EBILLS_URL ="http://igr.ercasng.com/api/getEbillsCollection";
+    public static final String INVOICE_URL ="http://igr.ercasng.com/api/getinvoice";
 
     public static void dashboard(Context context){
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
@@ -59,6 +60,11 @@ public class Utility {
         context.startActivity(i);
     }
 
+    public static void invoice(Context context){
+        Intent i = new Intent(context, InvoiceActivity.class);
+        context.startActivity(i);
+    }
+
     public static void draerableMenu(Context context, MenuItem item){
         switch(item.getItemId()){
             case R.id.dashboard:
@@ -76,6 +82,9 @@ public class Utility {
                 break;
             case R.id.ebills:
                 Utility.ebills(context);
+                break;
+            case R.id.invoice:
+                Utility.invoice(context);
                 break;
         }
     }

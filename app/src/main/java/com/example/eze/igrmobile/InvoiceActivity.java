@@ -11,9 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -27,49 +24,34 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.eze.igrmobile.model.Mda;
-import com.example.eze.igrmobile.model.RemittanceListModel;
-import com.example.eze.igrmobile.model.RemittanceModel;
-import com.example.eze.igrmobile.parser.RemittanceListParser;
-import com.example.eze.igrmobile.parser.RemittnaceParser;
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
+import com.example.eze.igrmobile.model.InvoiceModel;
+import com.example.eze.igrmobile.parser.InvoiceParser;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import de.codecrafters.tableview.TableView;
 import de.codecrafters.tableview.listeners.TableDataClickListener;
-import de.codecrafters.tableview.model.TableColumnPxWidthModel;
 import de.codecrafters.tableview.toolkit.SimpleTableDataAdapter;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 import de.codecrafters.tableview.toolkit.TableDataRowBackgroundProviders;
 
-/**
- * Created by EZE on 9/7/2017.
- */
-
-public class Remittance extends AppCompatActivity {
-    private Toolbar toolbar;
+public class InvoiceActivity extends AppCompatActivity {
     private Menu menu;
     MaterialSearchView searchView;
 
     String[] spaceProbeHeaders={"ID ","AMOUNT", "STATUS"};
     String[][] spaceProbes;
 
-    public List<RemittanceListModel> remittanceList;
+    public List<InvoiceModel> invoiceModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_remittance);
+        setContentView(R.layout.activity_invoice);
 
         setUpCollapsToolBar();
         pullData();
@@ -85,13 +67,13 @@ public class Remittance extends AppCompatActivity {
 
     private void makeCall() {
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        StringRequest request = new StringRequest(Request.Method.POST, Utility.REMITTANCE_URL,
+        StringRequest request = new StringRequest(Request.Method.POST, Utility.INVOICE_URL,
 
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 //                        Toast.makeText(MdaActivity.this, response, Toast.LENGTH_SHORT).show();
-                        remittanceList = RemittanceListParser.parseFeed(response);
+                        invoiceModel = InvoiceParser.parseFeed(response);
                         setTableView();
                     }
                 },
@@ -147,7 +129,7 @@ public class Remittance extends AppCompatActivity {
         tb.addDataClickListener(new TableDataClickListener() {
             @Override
             public void onDataClicked(int rowIndex, Object clickedData) {
-                Toast.makeText(Remittance.this, ((String[])clickedData)[0], Toast.LENGTH_SHORT).show();
+                Toast.makeText(InvoiceActivity.this, ((String[])clickedData)[0], Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -163,9 +145,9 @@ public class Remittance extends AppCompatActivity {
     }
 
     private void populateData() {
-        spaceProbes = new String[remittanceList.size()][3];
-        for (int i = 0; i <remittanceList.size(); i++) {
-            RemittanceListModel s = remittanceList.get(i);
+        spaceProbes = new String[invoiceModel.size()][3];
+        for (int i = 0; i <invoiceModel.size(); i++) {
+            InvoiceModel s = invoiceModel.get(i);
             spaceProbes[i][0] = s.getId();
             spaceProbes[i][1] = numberFormat(s.getAmount());
             spaceProbes[i][2] = s.getStatus();
@@ -224,7 +206,7 @@ public class Remittance extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 //Do some magic
-                Toast.makeText(Remittance.this, "submit", Toast.LENGTH_SHORT).show();
+                Toast.makeText(InvoiceActivity.this, "submit", Toast.LENGTH_SHORT).show();
                 return false;
             }
 

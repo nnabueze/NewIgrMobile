@@ -41,10 +41,10 @@ public class TwoFragment extends Fragment {
 
     public void setTextParam(){
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        mTextView.setText(numberFormat(preferences.getString("lastMonth",null).toString()));
-        currentMonth.setText(numberFormat(preferences.getString("currentMonth",null).toString()));
-        yestarday.setText(numberFormat(preferences.getString("yestarday",null).toString()));
-        today.setText(numberFormat(preferences.getString("today",null).toString()));
+        mTextView.setText(numberFormat(preferences.getString("last_month_remitted",null).toString()));
+        currentMonth.setText(numberFormat(preferences.getString("current_month_remitted",null).toString()));
+        yestarday.setText(numberFormat(preferences.getString("yestarday_remitted",null).toString()));
+        today.setText(numberFormat(preferences.getString("today_remitted",null).toString()));
 
     }
 

@@ -136,6 +136,10 @@ public class LoginActivity extends AppCompatActivity {
             editor.putString("id", auth.getId());
             editor.putString("image", auth.getImage());
             editor.putString("billerId", auth.getBillerId());
+            editor.putString("last_month_remitted", auth.getLastMonthRemitted());
+            editor.putString("current_month_remitted", auth.getCurrentMonthRemitted());
+            editor.putString("yestarday_remitted", auth.getYestardayRemitted());
+            editor.putString("today_remitted", auth.getTodayRemitted());
             editor.commit();
 
             startActivity(i);

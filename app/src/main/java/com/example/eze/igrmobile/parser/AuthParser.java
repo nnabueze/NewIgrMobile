@@ -25,6 +25,10 @@ public class AuthParser {
             auth.setImage(jsonObj.getJSONObject("data").getString("logo"));
             auth.setId(jsonObj.getJSONObject("data").getString("igr_key"));
             auth.setBillerId(jsonObj.getJSONObject("data").getString("billerId"));
+            auth.setCurrentMonthRemitted(jsonObj.getJSONObject("data").getString("current_month_remitted"));
+            auth.setLastMonthRemitted(jsonObj.getJSONObject("data").getString("last_month_remitted"));
+            auth.setYestardayRemitted(jsonObj.getJSONObject("data").getString("yestarday_remitted"));
+            auth.setTodayRemitted(jsonObj.getJSONObject("data").getString("today_remitted"));
 
             //return auth;
         } catch (JSONException e) {

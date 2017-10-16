@@ -14,6 +14,10 @@ public class Auth {
     private String image;
     private String name;
     private String billerId;
+    private String lastMonthRemitted;
+    private String currentMonthRemitted;
+    private String yestardayRemitted;
+    private String todayRemitted;
 
     public String getToken() {
         return token;
@@ -85,5 +89,37 @@ public class Auth {
 
     public void setBillerId(String billerId) {
         this.billerId = billerId;
+    }
+
+    public String getLastMonthRemitted() {
+        return lastMonthRemitted;
+    }
+
+    public void setLastMonthRemitted(String lastMonthRemitted) {
+        this.lastMonthRemitted = lastMonthRemitted;
+    }
+
+    public String getCurrentMonthRemitted() {
+        return currentMonthRemitted;
+    }
+
+    public void setCurrentMonthRemitted(String currentMonthRemitted) {
+        this.currentMonthRemitted = currentMonthRemitted;
+    }
+
+    public String getYestardayRemitted() {
+        return yestardayRemitted;
+    }
+
+    public void setYestardayRemitted(String yestardayRemitted) {
+        this.yestardayRemitted = yestardayRemitted;
+    }
+
+    public String getTodayRemitted() {
+        return todayRemitted;
+    }
+
+    public void setTodayRemitted(String todayRemitted) {
+        this.todayRemitted = todayRemitted;
     }
 }

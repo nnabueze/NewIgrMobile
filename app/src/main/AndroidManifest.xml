@@ -23,7 +23,8 @@
         <activity android:name=".Remittance" />
         <activity android:name=".PosActivity" />
         <activity android:name=".EbillsActivity" />
-        <activity android:name=".ReportActivity"></activity>
+        <activity android:name=".ReportActivity" />
+        <activity android:name=".InvoiceActivity"></activity>
     </application>
 
 </manifest>
