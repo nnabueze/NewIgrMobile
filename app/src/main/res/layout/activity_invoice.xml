@@ -41,6 +41,7 @@
 
 
             </android.support.v7.widget.Toolbar>
+
             <com.miguelcatalan.materialsearchview.MaterialSearchView
                 android:id="@+id/search_view"
                 android:layout_width="match_parent"
@@ -57,11 +58,18 @@
         android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context="com.example.eze.igrmobile.ReportActivity">
-        <de.codecrafters.tableview.TableView xmlns:table="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/tableView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            table:tableView_columnCount="3" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <de.codecrafters.tableview.TableView xmlns:table="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/tableView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                table:tableView_columnCount="3" />
+        </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
 
