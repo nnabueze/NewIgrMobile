@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -64,6 +67,10 @@ public class Remittance extends AppCompatActivity {
     String[] spaceProbeHeaders={"ID ","AMOUNT", "STATUS"};
     String[][] spaceProbes;
 
+    private RecyclerView recyclerView;
+    private LinearLayoutManager layoutManager;
+    private RemittanceAdpter adpter;
+
     public List<RemittanceListModel> remittanceList;
 
     @Override
@@ -72,6 +79,7 @@ public class Remittance extends AppCompatActivity {
         setContentView(R.layout.activity_remittance);
 
         setUpCollapsToolBar();
+        setUpRecyclerView();
         pullData();
     }
 
@@ -83,6 +91,15 @@ public class Remittance extends AppCompatActivity {
         }
     }
 
+    private void setUpRecyclerView() {
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerview1);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+    }
+
     private void makeCall() {
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         StringRequest request = new StringRequest(Request.Method.POST, Utility.REMITTANCE_URL,
@@ -92,7 +109,9 @@ public class Remittance extends AppCompatActivity {
                     public void onResponse(String response) {
 //                        Toast.makeText(MdaActivity.this, response, Toast.LENGTH_SHORT).show();
                         remittanceList = RemittanceListParser.parseFeed(response);
-                        setTableView();
+                        //setTableView();
+                        adpter = new RemittanceAdpter(Remittance.this, remittanceList);
+                        recyclerView.setAdapter(adpter);
                     }
                 },
 
