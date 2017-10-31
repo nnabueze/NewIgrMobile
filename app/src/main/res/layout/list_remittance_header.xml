@@ -11,7 +11,7 @@
         android:layout_margin="7dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="REMITTANCE ID"
+        android:text="ID"
         android:textColor="@color/black"
         android:textSize="14sp" />
 
