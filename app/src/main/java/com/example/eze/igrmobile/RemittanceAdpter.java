@@ -56,7 +56,7 @@ public class RemittanceAdpter extends RecyclerView.Adapter<RemittanceAdpter.MyVi
         public void setData(RemittanceListModel listModel, int position) {
             this.tab1.setText(listModel.getId());
             this.tab2.setText(listModel.getName());
-            this.tab3.setText(listModel.getAmount());
+            this.tab3.setText(numberFormat(listModel.getAmount()));
             this.tab4.setText(listModel.getStatus());
         }
 
