@@ -85,9 +85,9 @@ public class ReportActivity extends AppCompatActivity {
             }
         });
 
-        TableColumnPxWidthModel columnModel = new TableColumnPxWidthModel(2, 350);
+        /*TableColumnPxWidthModel columnModel = new TableColumnPxWidthModel(2, 350);
         columnModel.setColumnWidth(1, 550);
-        tb.setColumnModel(columnModel);
+        tb.setColumnModel(columnModel);*/
 
         int colorEvenRows = getResources().getColor(R.color.white);
         int colorOddRows = getResources().getColor(R.color.grey);

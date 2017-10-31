@@ -71,8 +71,8 @@ public class Utility {
                 Utility.dashboard(context);
                 break;
             case R.id.mda:
-                //Utility.mda(context);
-                Utility.report(context);
+                Utility.mda(context);
+                //Utility.report(context);
                 break;
             case R.id.pos:
                 Utility.pos(context);
