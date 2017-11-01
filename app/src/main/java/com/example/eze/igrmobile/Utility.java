@@ -83,9 +83,9 @@ public class Utility {
             case R.id.ebills:
                 Utility.ebills(context);
                 break;
-            case R.id.invoice:
+         /*   case R.id.invoice:
                 Utility.invoice(context);
-                break;
+                break;*/
         }
     }
 }

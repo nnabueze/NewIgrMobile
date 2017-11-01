@@ -27,7 +27,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:background="#EFEFEF"
+                android:background="#BBDEFB"
                 android:weightSum="2"
                 android:orientation="vertical"
                 android:id="@+id/layout_lastMonth"
@@ -81,7 +81,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:background="#EFEFEF"
+                android:background="#BBDEFB"
                 android:weightSum="2"
                 android:orientation="vertical"
                 android:elevation="5dp">
@@ -149,7 +149,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:background="#EFEFEF"
+                android:background="#BBDEFB"
                 android:weightSum="2"
                 android:orientation="vertical"
                 android:elevation="5dp">
@@ -202,7 +202,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:background="#EFEFEF"
+                android:background="#BBDEFB"
                 android:weightSum="2"
                 android:orientation="vertical"
                 android:elevation="5dp">
