@@ -10,8 +10,8 @@ public class Auth {
     private String currentMonth;
     private String yestarday;
     private String today;
-    private String id;
-    private String image;
+/*    private String id;
+    private String image;*/
     private String name;
     private String billerId;
     private String lastMonthRemitted;
@@ -59,7 +59,7 @@ public class Auth {
         this.today = today;
     }
 
-    public String getId() {
+/*    public String getId() {
         return id;
     }
 
@@ -73,7 +73,7 @@ public class Auth {
 
     public void setImage(String image) {
         this.image = image;
-    }
+    }*/
 
     public String getName() {
         return name;

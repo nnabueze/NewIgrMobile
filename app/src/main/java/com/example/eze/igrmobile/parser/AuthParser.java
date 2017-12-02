@@ -16,14 +16,14 @@ public class AuthParser {
             JSONObject jsonObj = new JSONObject(content);
 
             //Log.d("OutPut",jsonObj.getString("token"));
-            auth.setToken(jsonObj.getJSONObject("data").getString("token"));
+            /*auth.setToken(jsonObj.getJSONObject("data").getString("token"));*/
             auth.setLastMonth(jsonObj.getJSONObject("data").getString("last_month"));
             auth.setCurrentMonth(jsonObj.getJSONObject("data").getString("current_month"));
             auth.setYestarday(jsonObj.getJSONObject("data").getString("yestarday"));
             auth.setToday(jsonObj.getJSONObject("data").getString("today"));
             auth.setName(jsonObj.getJSONObject("data").getString("state_name"));
-            auth.setImage(jsonObj.getJSONObject("data").getString("logo"));
-            auth.setId(jsonObj.getJSONObject("data").getString("igr_key"));
+            /*auth.setImage(jsonObj.getJSONObject("data").getString("logo"));
+            auth.setId(jsonObj.getJSONObject("data").getString("igr_key"));*/
             auth.setBillerId(jsonObj.getJSONObject("data").getString("billerId"));
             auth.setCurrentMonthRemitted(jsonObj.getJSONObject("data").getString("current_month_remitted"));
             auth.setLastMonthRemitted(jsonObj.getJSONObject("data").getString("last_month_remitted"));

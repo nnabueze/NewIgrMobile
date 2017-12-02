@@ -18,6 +18,8 @@ public class Utility {
     public static final String POS_URL ="http://igr.ercasng.com/api/getPosCollection";
     public static final String EBILLS_URL ="http://igr.ercasng.com/api/getEbillsCollection";
     public static final String INVOICE_URL ="http://igr.ercasng.com/api/getinvoice";
+    public static final String NEW_LOGIN_URL ="http://hub.ercasng.com:8011/token";
+    public static final String NEW_LOGIN_TWO_URL ="http://hub.ercasng.com:8011/api/IgrMobile/MobileLogin";
 
     public static void dashboard(Context context){
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);

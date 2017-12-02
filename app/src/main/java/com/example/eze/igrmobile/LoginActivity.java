@@ -20,14 +20,22 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.*;
 import com.android.volley.toolbox.Volley;
 import com.example.eze.igrmobile.model.Auth;
+import com.example.eze.igrmobile.model.TokenModel;
 import com.example.eze.igrmobile.parser.AuthParser;
+import com.example.eze.igrmobile.parser.TokenParser;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -38,6 +46,7 @@ import butterknife.ButterKnife;
 public class LoginActivity extends AppCompatActivity {
 
     private Auth auth;
+    private TokenModel tokenModel;
     private Boolean exit = false;
     @Bind(R.id.input_email) EditText emailText;
     @Bind(R.id.input_password) EditText passwordText;
@@ -67,16 +76,65 @@ public class LoginActivity extends AppCompatActivity {
             if (!isOnLine()){
                 Toast.makeText(this, "Network isn't available", Toast.LENGTH_SHORT).show();
             }else{
-                makeCall();
+                tokenCall();
             }
         }
     }
 
+    private void tokenCall() {
+        StringRequest request = new StringRequest(Request.Method.POST, Utility.NEW_LOGIN_URL,
+
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        tokenModel = TokenParser.parseFeed(response);
+                        responseTokenResult();
+
+                    }
+                },
+
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        onLoginFailDialog();
+                    }
+                }){
+            //adding header param
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("username", emailText.getText().toString());
+                params.put("password", passwordText.getText().toString());
+                params.put("grant_type", "password");
+
+                return params;
+            }
+        };
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(request);
+    }
+
+    private void responseTokenResult() {
+        if (tokenModel == null){
+            Toast.makeText(this, "Parser Error occurred", Toast.LENGTH_SHORT).show();
+        }else{
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("token",tokenModel.getAccess_token());
+            editor.commit();
+
+            makeCall();
+        }
+    }
+
     private void makeCall() {
+        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this, R.style.Theme_AppCompat_Light_Dialog);
         progressDialog.setMessage("Authenticating...");
         progressDialog.show();
-        StringRequest request = new StringRequest(Request.Method.POST, Utility.LOGIN_URL,
+        StringRequest request = new StringRequest(Request.Method.POST, Utility.NEW_LOGIN_TWO_URL,
 
                 new Response.Listener<String>() {
                     @Override
@@ -92,7 +150,21 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.dismiss();
-                        onLoginFailDialog();
+                        //onLoginFailDialog();
+                        if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                            onLoginFailDialog("Communication Error!");
+
+                        } else if (error instanceof AuthFailureError) {
+                            onLoginFailDialog("Authentication Error!");
+                        } else if (error instanceof ServerError) {
+                            onLoginFailDialog("Server Side Error!");
+                        } else if (error instanceof NetworkError) {
+                            onLoginFailDialog("Network Error!");
+                        } else if (error instanceof ParseError) {
+                            onLoginFailDialog("Parse Error!");
+                        }else{
+                            onLoginFailDialog("Invalid email and password");
+                        }
                     }
                 }){
             //adding header param
@@ -100,12 +172,36 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("email", emailText.getText().toString());
-                params.put("password", passwordText.getText().toString());
+                params.put("Email", emailText.getText().toString());
+                params.put("Password", passwordText.getText().toString());
 
                 return params;
             }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + preferences.getString("token", null).toString());
+                return headers;
+            }
         };
+
+        request.setRetryPolicy(new RetryPolicy() {
+            @Override
+            public int getCurrentTimeout() {
+                return 90000;
+            }
+
+            @Override
+            public int getCurrentRetryCount() {
+                return 90000;
+            }
+
+            @Override
+            public void retry(VolleyError error) throws VolleyError {
+
+            }
+        });
 
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(request);
@@ -122,8 +218,8 @@ public class LoginActivity extends AppCompatActivity {
             i.putExtra("yestarday", auth.getYestarday());
             i.putExtra("today", auth.getToday());
             i.putExtra("name",auth.getName());
-            i.putExtra("id", auth.getId());
-            i.putExtra("image", auth.getImage());
+            /*i.putExtra("id", auth.getId());
+            i.putExtra("image", auth.getImage());*/
 
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
             SharedPreferences.Editor editor = preferences.edit();
@@ -133,8 +229,8 @@ public class LoginActivity extends AppCompatActivity {
             editor.putString("yestarday", auth.getYestarday());
             editor.putString("today", auth.getToday());
             editor.putString("name",auth.getName());
-            editor.putString("id", auth.getId());
-            editor.putString("image", auth.getImage());
+/*            editor.putString("id", auth.getId());
+            editor.putString("image", auth.getImage());*/
             editor.putString("billerId", auth.getBillerId());
             editor.putString("last_month_remitted", auth.getLastMonthRemitted());
             editor.putString("current_month_remitted", auth.getCurrentMonthRemitted());
@@ -162,6 +258,10 @@ public class LoginActivity extends AppCompatActivity {
                 dialogInterface.cancel();
             }
         }).show();
+    }
+
+    private void onLoginFailDialog(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 
     private boolean isOnLine() {
