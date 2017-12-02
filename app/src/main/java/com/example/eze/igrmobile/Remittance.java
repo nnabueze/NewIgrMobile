@@ -26,6 +26,7 @@ import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
@@ -149,6 +150,23 @@ public class Remittance extends AppCompatActivity {
                 return headers;
             }
         };
+        request.setRetryPolicy(new RetryPolicy() {
+            @Override
+            public int getCurrentTimeout() {
+                return 90000;
+            }
+
+            @Override
+            public int getCurrentRetryCount() {
+                return 90000;
+            }
+
+            @Override
+            public void retry(VolleyError error) throws VolleyError {
+
+            }
+        });
+
         RequestQueue queue = com.android.volley.toolbox.Volley.newRequestQueue(this);
         queue.add(request);
     }

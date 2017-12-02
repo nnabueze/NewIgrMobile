@@ -29,7 +29,7 @@ public class RemittanceListParser {
                 JSONObject obj = ar.getJSONObject(i);
                 RemittanceListModel remittanceListModel = new RemittanceListModel();
 
-                remittanceListModel.setId(obj.getString("id"));
+                remittanceListModel.setId(obj.getString("Id"));
                 remittanceListModel.setAmount(obj.getString("amount"));
                 remittanceListModel.setName(obj.getString("name"));
                 remittanceListModel.setRemittedate("remiteDate");
