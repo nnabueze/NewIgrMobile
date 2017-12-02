@@ -223,7 +223,6 @@ public class LoginActivity extends AppCompatActivity {
 
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
             SharedPreferences.Editor editor = preferences.edit();
-            editor.putString("token",auth.getToken());
             editor.putString("lastMonth", auth.getLastMonth());
             editor.putString("currentMonth", auth.getCurrentMonth());
             editor.putString("yestarday", auth.getYestarday());

@@ -12,11 +12,14 @@ import android.widget.Toast;
  */
 
 public class Utility {
-    public static final String LOGIN_URL ="http://igr.ercasng.com/api/igr_mobile";
-    public static final String MDA_URL ="http://igr.ercasng.com/api/mda";
-    public static final String REMITTANCE_URL ="http://igr.ercasng.com/api/getremittance";
-    public static final String POS_URL ="http://igr.ercasng.com/api/getPosCollection";
-    public static final String EBILLS_URL ="http://igr.ercasng.com/api/getEbillsCollection";
+    //public static final String MDA_URL ="http://igr.ercasng.com/api/mda";
+    public static final String MDA_URL ="http://hub.ercasng.com:8011/api/IgrMobile/GetMdas";
+    //public static final String REMITTANCE_URL ="http://igr.ercasng.com/api/getremittance";
+    public static final String REMITTANCE_URL ="http://hub.ercasng.com:8011/api/IgrMobile/GetRemittance";
+    //public static final String POS_URL ="http://igr.ercasng.com/api/getPosCollection";
+    public static final String POS_URL ="http://hub.ercasng.com:8011/api/IgrMobile/GetPos";
+    //public static final String EBILLS_URL ="http://igr.ercasng.com/api/getEbillsCollection";
+    public static final String EBILLS_URL ="http://hub.ercasng.com:8011/api/IgrMobile/GetEbills";
     public static final String INVOICE_URL ="http://igr.ercasng.com/api/getinvoice";
     public static final String NEW_LOGIN_URL ="http://hub.ercasng.com:8011/token";
     public static final String NEW_LOGIN_TWO_URL ="http://hub.ercasng.com:8011/api/IgrMobile/MobileLogin";
