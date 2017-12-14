@@ -1,6 +1,7 @@
 package com.example.eze.igrmobile;
 
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -104,10 +105,18 @@ public class PosActivity extends AppCompatActivity {
     }
 
     public void setTextView() {
+//        Typeface myTypeface = Typeface.createFromAsset(
+//                this.getAssets(),
+//                "font/Roboto-Light.ttf");
         lastMonth = (TextView) findViewById(R.id.lastMonth);
         currentMonth = (TextView) findViewById(R.id.currentMonth);
         yesterday = (TextView) findViewById(R.id.yestarday);
         today = (TextView) findViewById(R.id.today);
+
+//        lastMonth.setTypeface(myTypeface);
+//        currentMonth.setTypeface(myTypeface);
+//        yesterday.setTypeface(myTypeface);
+//        today.setTypeface(myTypeface);
     }
 
     private void pullData() {

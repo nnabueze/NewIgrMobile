@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FF5722</color>
-    <color name="colorPrimaryDark">#F4511E</color>
+    <color name="colorPrimary">#2979FF</color>
+    <color name="colorPrimaryDark">#2962FF</color>
     <color name="colorAccent">#e65100</color>
     <color name="loginBackground">#a9b0c3</color>
     <color name="textColorPrimary">#FFFFFF</color>
@@ -23,4 +23,12 @@
     <color name="base">#AAAAAA</color>
     <color name="iron">#CCCCCC</color>
     <color name="white">#FFFFFF</color>
+
+    <color name="deeppurple">#7c4dff</color>
+    <color name="yellow">#ffb300</color>
+    <color name="bg_screen1">#f64c73</color>
+    <color name="bg_screen2">#20d2bb</color>
+    <color name="bg_screen3">#3395ff</color>
+    <color name="bg_screen4">#c873f4</color>
+    <color name="lightgray">#ededed</color>
 </resources>

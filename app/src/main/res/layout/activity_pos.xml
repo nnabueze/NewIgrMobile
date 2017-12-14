@@ -311,3 +311,257 @@
 
 
 </android.support.design.widget.CoordinatorLayout>
+
+
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--xmlns:tools="http://schemas.android.com/tools"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--android:fitsSystemWindows="true"-->
+<!--tools:context="com.example.eze.igrmobile.ReportActivity">-->
+
+<!--<android.support.design.widget.AppBarLayout-->
+    <!--android:id="@+id/app_bar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/app_bar_height"-->
+    <!--android:fitsSystemWindows="true"-->
+    <!--android:theme="@style/AppTheme.AppBarOverlay">-->
+
+    <!--<android.support.design.widget.CollapsingToolbarLayout-->
+        <!--android:id="@+id/toolbar_layout"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:fitsSystemWindows="true"-->
+        <!--app:contentScrim="?attr/colorPrimary"-->
+        <!--app:layout_scrollFlags="scroll|exitUntilCollapsed">-->
+
+
+        <!--<ImageView-->
+            <!--android:id="@+id/expandedImage"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:scaleType="centerCrop"-->
+            <!--android:src="@drawable/atm1"-->
+            <!--app:layout_collapseMode="parallax"-->
+            <!--app:layout_collapseParallaxMultiplier="0.7" />-->
+
+        <!--<android.support.v7.widget.Toolbar-->
+            <!--android:id="@+id/toolbar"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="?attr/actionBarSize"-->
+            <!--app:layout_collapseMode="pin"-->
+            <!--app:popupTheme="@style/AppTheme.PopupOverlay">-->
+        <!--</android.support.v7.widget.Toolbar>-->
+
+    <!--</android.support.design.widget.CollapsingToolbarLayout>-->
+<!--</android.support.design.widget.AppBarLayout>-->
+
+<!--&lt;!&ndash;<android.support.v4.widget.NestedScrollView&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:fillViewport="true"&ndash;&gt;-->
+    <!--&lt;!&ndash;app:layout_behavior="@string/appbar_scrolling_view_behavior"&ndash;&gt;-->
+    <!--&lt;!&ndash;tools:context="com.example.eze.igrmobile.ReportActivity">&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+        <!--&lt;!&ndash;xmlns:android="http://schemas.android.com/apk/res/android"&ndash;&gt;-->
+        <!--&lt;!&ndash;xmlns:app="http://schemas.android.com/apk/res-auto"&ndash;&gt;-->
+        <!--&lt;!&ndash;xmlns:tools="http://schemas.android.com/tools"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:orientation="vertical"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:padding="10dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:background="#fcfcfc"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:gravity="center"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:id="@+id/ll">&ndash;&gt;-->
+        <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+            <!--&lt;!&ndash;android:clipToPadding="false"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:gravity="center"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:orientation="horizontal"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content">&ndash;&gt;-->
+            <!--&lt;!&ndash;<android.support.v7.widget.CardView&ndash;&gt;-->
+                <!--&lt;!&ndash;app:cardBackgroundColor="@color/white"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:foreground="?android:attr/selectableItemBackground"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:clickable="true"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/bankcardId"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="160dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="190dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_margin="10dp">&ndash;&gt;-->
+                <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:orientation="vertical"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:gravity="center">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="64dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="64dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:background="@drawable/cerclebackgroundpurple"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:src="@drawable/remittance"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:padding="10dp"/>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/lastMonth"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textStyle="bold"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginTop="10dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text=""/>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<View&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="1dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:background="@color/lightgray"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_margin="10dp"/>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:gravity="center"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="POS Collected Last Month"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:padding="5dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textColor="@android:color/darker_gray"/>&ndash;&gt;-->
+
+                <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+            <!--&lt;!&ndash;</android.support.v7.widget.CardView>&ndash;&gt;-->
+            <!--&lt;!&ndash;<android.support.v7.widget.CardView&ndash;&gt;-->
+                <!--&lt;!&ndash;app:cardBackgroundColor="@color/white"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:foreground="?android:attr/selectableItemBackground"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:clickable="true"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="160dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="190dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_margin="10dp">&ndash;&gt;-->
+                <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:orientation="vertical"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:gravity="center">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="64dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="64dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:background="@drawable/circlebackgroundaccent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:src="@drawable/remittance"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:padding="10dp"/>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/currentMonth"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textStyle="bold"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginTop="10dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text=""/>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<View&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="1dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:background="@color/lightgray"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_margin="10dp"/>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:gravity="center"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="POS Collected Current Month"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:padding="5dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textColor="@android:color/darker_gray"/>&ndash;&gt;-->
+
+                <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+            <!--&lt;!&ndash;</android.support.v7.widget.CardView>&ndash;&gt;-->
+
+        <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+        <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+            <!--&lt;!&ndash;android:clipToPadding="false"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:gravity="center"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:orientation="horizontal"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content">&ndash;&gt;-->
+            <!--&lt;!&ndash;<android.support.v7.widget.CardView&ndash;&gt;-->
+                <!--&lt;!&ndash;app:cardBackgroundColor="@color/white"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:foreground="?android:attr/selectableItemBackground"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:clickable="true"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="160dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="190dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_margin="10dp">&ndash;&gt;-->
+                <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:orientation="vertical"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:gravity="center">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="64dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="64dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:background="@drawable/circlebackgroundgreen"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:src="@drawable/remittance"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:padding="10dp"/>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/yestarday"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textStyle="bold"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginTop="10dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text=""/>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<View&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="1dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:background="@color/lightgray"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_margin="10dp"/>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:gravity="center"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="POS Collected Yestarday"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:padding="5dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textColor="@android:color/darker_gray"/>&ndash;&gt;-->
+
+                <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+            <!--&lt;!&ndash;</android.support.v7.widget.CardView>&ndash;&gt;-->
+            <!--&lt;!&ndash;<android.support.v7.widget.CardView&ndash;&gt;-->
+                <!--&lt;!&ndash;app:cardBackgroundColor="@color/white"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:foreground="?android:attr/selectableItemBackground"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:clickable="true"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="160dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="190dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_margin="10dp">&ndash;&gt;-->
+
+                <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:gravity="center"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:orientation="vertical">&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="64dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="64dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:background="@drawable/circlebackgroundyellow2"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:padding="10dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:src="@drawable/remittance" />&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:id="@+id/today"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginTop="10dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text=""&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textStyle="bold" />&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;<View&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="1dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_margin="10dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:background="@color/lightgray" />&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:gravity="center"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:padding="5dp"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="POS Collected Today"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textColor="@android:color/darker_gray" />&ndash;&gt;-->
+
+                <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+            <!--&lt;!&ndash;</android.support.v7.widget.CardView>&ndash;&gt;-->
+
+        <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+    <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</android.support.v4.widget.NestedScrollView>&ndash;&gt;-->
+<!--&lt;!&ndash;</android.support.design.widget.CoordinatorLayout>&ndash;&gt;-->
