@@ -1,5 +1,6 @@
 package com.example.eze.igrmobile;
 
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
@@ -102,12 +103,16 @@ public class Remittance extends AppCompatActivity {
     }
 
     private void makeCall() {
+        final ProgressDialog progressDialog = new ProgressDialog(Remittance.this, R.style.Theme_AppCompat_Light_Dialog);
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         StringRequest request = new StringRequest(Request.Method.POST, Utility.REMITTANCE_URL,
 
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        progressDialog.hide();
 //                        Toast.makeText(MdaActivity.this, response, Toast.LENGTH_SHORT).show();
                         remittanceList = RemittanceListParser.parseFeed(response);
                         //setTableView();
@@ -119,6 +124,7 @@ public class Remittance extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        progressDialog.hide();
                         if (error instanceof TimeoutError || error instanceof NoConnectionError) {
                             onLoginFailDialog("Communication Error!");
 

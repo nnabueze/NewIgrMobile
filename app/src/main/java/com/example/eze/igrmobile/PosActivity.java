@@ -1,5 +1,6 @@
 package com.example.eze.igrmobile;
 
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
@@ -105,18 +106,10 @@ public class PosActivity extends AppCompatActivity {
     }
 
     public void setTextView() {
-//        Typeface myTypeface = Typeface.createFromAsset(
-//                this.getAssets(),
-//                "font/Roboto-Light.ttf");
         lastMonth = (TextView) findViewById(R.id.lastMonth);
         currentMonth = (TextView) findViewById(R.id.currentMonth);
         yesterday = (TextView) findViewById(R.id.yestarday);
         today = (TextView) findViewById(R.id.today);
-
-//        lastMonth.setTypeface(myTypeface);
-//        currentMonth.setTypeface(myTypeface);
-//        yesterday.setTypeface(myTypeface);
-//        today.setTypeface(myTypeface);
     }
 
     private void pullData() {
@@ -128,12 +121,16 @@ public class PosActivity extends AppCompatActivity {
     }
 
     private void makeCall() {
+        final ProgressDialog progressDialog = new ProgressDialog(PosActivity.this, R.style.Theme_AppCompat_Light_Dialog);
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         StringRequest request = new StringRequest(Request.Method.POST, Utility.POS_URL,
 
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        progressDialog.hide();
 //                        Toast.makeText(MdaActivity.this, response, Toast.LENGTH_SHORT).show();
                         parseRemittanceFeed(response);
                     }
@@ -142,6 +139,7 @@ public class PosActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        progressDialog.hide();
                         if (error instanceof TimeoutError || error instanceof NoConnectionError) {
                             onLoginFailDialog("Communication Error!");
 

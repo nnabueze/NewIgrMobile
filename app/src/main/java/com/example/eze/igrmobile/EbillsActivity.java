@@ -1,5 +1,6 @@
 package com.example.eze.igrmobile;
 
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -73,12 +74,16 @@ public class EbillsActivity extends AppCompatActivity {
     }
 
     private void makeCall() {
+        final ProgressDialog progressDialog = new ProgressDialog(EbillsActivity.this, R.style.Theme_AppCompat_Light_Dialog);
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         StringRequest request = new StringRequest(Request.Method.POST, Utility.EBILLS_URL,
 
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        progressDialog.hide();
 //                        Toast.makeText(MdaActivity.this, response, Toast.LENGTH_SHORT).show();
                         parseRemittanceFeed(response);
                     }
@@ -87,6 +92,7 @@ public class EbillsActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        progressDialog.hide();
                         if (error instanceof TimeoutError || error instanceof NoConnectionError) {
                             onLoginFailDialog("Communication Error!");
 
