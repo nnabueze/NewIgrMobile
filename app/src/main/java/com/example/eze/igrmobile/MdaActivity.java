@@ -1,5 +1,6 @@
 package com.example.eze.igrmobile;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
@@ -98,12 +99,16 @@ public class MdaActivity extends AppCompatActivity {
     }
 
     private void makeCall() {
+        final ProgressDialog progressDialog = new ProgressDialog(MdaActivity.this, R.style.Theme_AppCompat_Light_Dialog);
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         StringRequest request = new StringRequest(Request.Method.POST, Utility.MDA_URL,
 
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        progressDialog.hide();
 //                        Toast.makeText(MdaActivity.this, response, Toast.LENGTH_SHORT).show();
                         mdaList = MdaParser.parseFeed(response);
                         adpter = new MyAdpter(MdaActivity.this, mdaList);
@@ -114,6 +119,7 @@ public class MdaActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        progressDialog.hide();
                         if (error instanceof TimeoutError || error instanceof NoConnectionError) {
                             onLoginFailDialog("Communication Error!");
 
