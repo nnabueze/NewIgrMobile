@@ -2,6 +2,7 @@ package com.ercasng.eze.igrmobile;
 
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +37,7 @@ import java.util.Map;
 
 public class PosActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    private TextView lastMonth, currentMonth, yesterday, today;
+    private TextView lastMonth, currentMonth, yesterday, today, indicator, indicator2, indicator3;
     private PosModel posModel;
     private Menu menu;
 
@@ -108,6 +110,9 @@ public class PosActivity extends AppCompatActivity {
         currentMonth = (TextView) findViewById(R.id.currentMonth);
         yesterday = (TextView) findViewById(R.id.yestarday);
         today = (TextView) findViewById(R.id.today);
+        indicator = (TextView) findViewById(R.id.indicator);
+        indicator2 = (TextView) findViewById(R.id.indicator2);
+        indicator3 = (TextView) findViewById(R.id.indicator3);
     }
 
     private void pullData() {
@@ -199,7 +204,104 @@ public class PosActivity extends AppCompatActivity {
         yesterday.setText(numberFormat(posModel.getYesterday()));
         today.setText(numberFormat(posModel.getToday()));
 
+        //getting current month
+        currentIndicator();
+        yesterdayIndicator();
+        todayIndicator();
 
+    }
+
+    private void todayIndicator() {
+        double yesterdayAmount = Double.parseDouble(posModel.getYesterday());
+        double todayAmount = Double.parseDouble(posModel.getToday());
+
+        if (todayAmount > yesterdayAmount){
+            //Increase = New Number - Original Number
+            double increase = todayAmount - yesterdayAmount;
+
+            //% increase = Increase ÷ Original Number × 100
+            double percentageIncrease = increase / yesterdayAmount* 100;
+
+            indicator3.setText(String.format("%.2f", percentageIncrease)+"%");
+            indicator3.setVisibility(View.VISIBLE);
+            indicator3.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_drop_up_black_18dp, 0, 0, 0);
+            indicator3.setTextColor(Color.parseColor("#2E7D32"));
+        }
+
+        if (yesterdayAmount > todayAmount){
+            //Increase = New Number - Original Number
+            double decrease = todayAmount - yesterdayAmount;
+
+            //% increase = Increase ÷ Original Number × 100
+            double percentageDecrease = decrease / yesterdayAmount * 100;
+
+            indicator3.setText(String.format("%.2f", percentageDecrease)+"%");
+            indicator3.setVisibility(View.VISIBLE);
+            indicator3.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_drop_down_black_18dp, 0, 0, 0);
+            indicator3.setTextColor(Color.parseColor("#C62828"));
+        }
+    }
+
+    private void yesterdayIndicator() {
+        double yesterdayAmount = Double.parseDouble(posModel.getYesterday());
+        double currentAmount = Double.parseDouble(posModel.getCurrentMonth());
+
+        if (yesterdayAmount > currentAmount){
+            //Increase = New Number - Original Number
+            double increase = yesterdayAmount - currentAmount;
+
+            //% increase = Increase ÷ Original Number × 100
+            double percentageIncrease = increase / currentAmount* 100;
+
+            indicator2.setText(String.format("%.2f", percentageIncrease)+"%");
+            indicator2.setVisibility(View.VISIBLE);
+            indicator2.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_drop_up_black_18dp, 0, 0, 0);
+            indicator2.setTextColor(Color.parseColor("#2E7D32"));
+        }
+
+        if (currentAmount > yesterdayAmount){
+            //Increase = New Number - Original Number
+            double decrease = yesterdayAmount - currentAmount;
+
+            //% increase = Increase ÷ Original Number × 100
+            double percentageDecrease = decrease / currentAmount * 100;
+
+            indicator2.setText(String.format("%.2f", percentageDecrease)+"%");
+            indicator2.setVisibility(View.VISIBLE);
+            indicator2.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_drop_down_black_18dp, 0, 0, 0);
+            indicator2.setTextColor(Color.parseColor("#C62828"));
+        }
+    }
+
+    private void currentIndicator() {
+        //checking increase
+        double lastAmount = Double.parseDouble(posModel.getLastMonth());
+        double currentAmount = Double.parseDouble(posModel.getCurrentMonth());
+        if (currentAmount > lastAmount){
+            //Increase = New Number - Original Number
+            double increase = currentAmount - lastAmount;
+
+            //% increase = Increase ÷ Original Number × 100
+            double percentageIncrease = increase / lastAmount* 100;
+
+            indicator.setText(String.format("%.2f", percentageIncrease)+"%");
+            indicator.setVisibility(View.VISIBLE);
+            indicator.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_drop_up_black_18dp, 0, 0, 0);
+            indicator.setTextColor(Color.parseColor("#2E7D32"));
+        }
+
+        if (lastAmount > currentAmount){
+            //Increase = New Number - Original Number
+            double decrease = currentAmount - lastAmount;
+
+            //% increase = Increase ÷ Original Number × 100
+            double percentageDecrease = decrease / lastAmount * 100;
+
+            indicator.setText(String.format("%.2f", percentageDecrease)+"%");
+            indicator.setVisibility(View.VISIBLE);
+            indicator.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_drop_down_black_18dp, 0, 0, 0);
+            indicator.setTextColor(Color.parseColor("#C62828"));
+        }
     }
 
     private void onLoginFailDialog(String msg) {

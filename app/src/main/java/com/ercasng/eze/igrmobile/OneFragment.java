@@ -18,7 +18,7 @@ import java.text.DecimalFormat;
  */
 
 public class OneFragment extends Fragment {
-    TextView mTextView, currentMonth, yestarday, today, indictator, indicator2;
+    TextView mTextView, currentMonth, yestarday, today, indictator, indicator2, indicator3;
     SharedPreferences preferences;
     public OneFragment() {
         // Required empty public constructor
@@ -40,6 +40,7 @@ public class OneFragment extends Fragment {
         today =(TextView) v.findViewById(R.id.today);
         indictator = (TextView) v.findViewById(R.id.indicator);
         indicator2 = (TextView) v.findViewById(R.id.indicator2);
+        indicator3 = (TextView) v.findViewById(R.id.indicator3);
         setTextParam();
         return v;
     }
@@ -54,6 +55,39 @@ public class OneFragment extends Fragment {
         //current month indicator
         currentIndicator();
         todayIndicator();
+        yesterdayIndicator();
+
+    }
+
+    private void yesterdayIndicator() {
+        double yesterdayAmount = Double.parseDouble(preferences.getString("yestarday",null));
+        double currentAmount = Double.parseDouble(preferences.getString("currentMonth",null));
+
+        if (yesterdayAmount > currentAmount){
+            //Increase = New Number - Original Number
+            double increase = yesterdayAmount - currentAmount;
+
+            //% increase = Increase ÷ Original Number × 100
+            double percentageIncrease = increase / currentAmount* 100;
+
+            indicator3.setText(String.format("%.2f", percentageIncrease)+"%");
+            indicator3.setVisibility(View.VISIBLE);
+            indicator3.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_drop_up_black_18dp, 0, 0, 0);
+            indicator3.setTextColor(Color.parseColor("#2E7D32"));
+        }
+
+        if (currentAmount > yesterdayAmount){
+            //Increase = New Number - Original Number
+            double decrease = yesterdayAmount - currentAmount;
+
+            //% increase = Increase ÷ Original Number × 100
+            double percentageDecrease = decrease / currentAmount * 100;
+
+            indicator3.setText(String.format("%.2f", percentageDecrease)+"%");
+            indicator3.setVisibility(View.VISIBLE);
+            indicator3.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_drop_down_black_18dp, 0, 0, 0);
+            indicator3.setTextColor(Color.parseColor("#C62828"));
+        }
 
     }
 
