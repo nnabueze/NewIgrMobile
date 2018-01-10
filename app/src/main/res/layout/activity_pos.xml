@@ -80,15 +80,16 @@
                     android:orientation="vertical"
                     android:id="@+id/layout_lastMonth"
                     android:elevation="5dp">
+
                     <TextView
+                        android:id="@+id/lastMonth"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="****"
-                        android:id="@+id/lastMonth"
-                        android:textColor="@color/black"
+                        android:fontFamily="sans-serif-light"
                         android:gravity="bottom|center"
-                        android:fontFamily="sans-serif-light"/>
+                        android:text="****"
+                        android:textColor="@color/black" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
