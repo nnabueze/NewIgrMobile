@@ -28,6 +28,7 @@ import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.ercasng.eze.igrmobile.AnimationDir.MyAnimation;
 import com.ercasng.eze.igrmobile.model.PosModel;
 import com.ercasng.eze.igrmobile.parser.PosParser;
 
@@ -113,6 +114,15 @@ public class PosActivity extends AppCompatActivity {
         indicator = (TextView) findViewById(R.id.indicator);
         indicator2 = (TextView) findViewById(R.id.indicator2);
         indicator3 = (TextView) findViewById(R.id.indicator3);
+
+        MyAnimation.animateHome(lastMonth);
+        MyAnimation.animateHome(currentMonth);
+        MyAnimation.animateHome(yesterday);
+        MyAnimation.animateHome(today);
+        MyAnimation.animateHome(indicator);
+        MyAnimation.animateHome(indicator2);
+        MyAnimation.animateHome(indicator3);
+
     }
 
     private void pullData() {

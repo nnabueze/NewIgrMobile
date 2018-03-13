@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.ercasng.eze.igrmobile.AnimationDir.MyAnimation;
 import com.ercasng.eze.igrmobile.model.RemittanceListModel;
 
 import java.text.DecimalFormat;
@@ -36,6 +37,7 @@ public class RemittanceAdpter extends RecyclerView.Adapter<RemittanceAdpter.MyVi
     public void onBindViewHolder(MyViewHolder holder, int position) {
         RemittanceListModel listModel = remittanceListModels.get(position);
         holder.setData(listModel, position);
+        MyAnimation.animateRecycler(holder);
     }
 
     @Override

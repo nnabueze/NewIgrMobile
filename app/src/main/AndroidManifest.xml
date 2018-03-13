@@ -19,12 +19,52 @@
             </intent-filter>
         </activity>
         <activity android:name="com.ercasng.eze.igrmobile.Dashboard" />
-        <activity android:name="com.ercasng.eze.igrmobile.MdaActivity" />
-        <activity android:name="com.ercasng.eze.igrmobile.Remittance" />
-        <activity android:name="com.ercasng.eze.igrmobile.PosActivity" />
-        <activity android:name="com.ercasng.eze.igrmobile.EbillsActivity" />
-        <activity android:name="com.ercasng.eze.igrmobile.ReportActivity" />
-        <activity android:name="com.ercasng.eze.igrmobile.InvoiceActivity"></activity>
+
+        <!--<activity-->
+            <!--android:name=".SchemeOwnersModule.Dashboard.ExtensionWorkersDetailActivity"-->
+            <!--android:parentActivityName=".SchemeOwnersModule.Dashboard.Scheme_ExtensionActivity">-->
+            <!--<meta-data-->
+                <!--android:name="android.support.PARENT_ACTIVITY"-->
+                <!--android:configChanges="orientation|screenSize"-->
+                <!--android:value=".SchemeOwnersModule.Dashboard.Scheme_ExtensionActivity" />-->
+        <!--</activity>-->
+
+        <activity android:name="com.ercasng.eze.igrmobile.MdaActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:configChanges="orientation|screenSize"
+                android:value="com.ercasng.eze.igrmobile.MdaActivity"/>
+        </activity>
+        <activity android:name="com.ercasng.eze.igrmobile.Remittance">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:configChanges="orientation|screenSize"
+                android:value="com.ercasng.eze.igrmobile.Remittance"/>
+        </activity>
+        <activity android:name="com.ercasng.eze.igrmobile.PosActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:configChanges="orientation|screenSize"
+                android:value="com.ercasng.eze.igrmobile.PosActivity"/>
+        </activity>
+        <activity android:name="com.ercasng.eze.igrmobile.EbillsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:configChanges="orientation|screenSize"
+                android:value="com.ercasng.eze.igrmobile.EbillsActivity"/>
+        </activity>
+        <activity android:name="com.ercasng.eze.igrmobile.ReportActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:configChanges="orientation|screenSize"
+                android:value="com.ercasng.eze.igrmobile.ReportActivity"/>
+        </activity>
+        <activity android:name="com.ercasng.eze.igrmobile.InvoiceActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:configChanges="orientation|screenSize"
+                android:value="com.ercasng.eze.igrmobile.InvoiceActivity"/>
+        </activity>
     </application>
 
 </manifest>

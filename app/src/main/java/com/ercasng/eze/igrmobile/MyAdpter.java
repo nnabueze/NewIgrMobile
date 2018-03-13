@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.ercasng.eze.igrmobile.AnimationDir.MyAnimation;
 import com.ercasng.eze.igrmobile.model.Mda;
 
 import java.text.DecimalFormat;
@@ -36,6 +37,7 @@ public class MyAdpter extends RecyclerView.Adapter<MyAdpter.MyViewHolder> {
 //        holder.title1.setText(mda.getName());
 //        holder.title2.setText(mda.getAmount());
         holder.setData(mda, position);
+        MyAnimation.animateHome(holder);
     }
 
     @Override

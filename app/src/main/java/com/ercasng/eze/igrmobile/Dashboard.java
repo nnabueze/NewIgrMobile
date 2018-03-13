@@ -23,6 +23,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ercasng.eze.igrmobile.AnimationDir.MyAnimation;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
@@ -77,6 +78,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
                     .error(R.drawable.logo)
                     .into(imageView);
         }
+        MyAnimation.animateHome(imageView);
     }
 
     @Override
@@ -118,7 +120,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
-
+        MyAnimation.animateHome(tabLayout);
         setupTabIcons();
     }
 
@@ -132,6 +134,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         adapter.addFragment(new OneFragment(), "Collections");
         adapter.addFragment(new TwoFragment(), "Remittance");
         viewPager.setAdapter(adapter);
+        MyAnimation.animateHome(viewPager);
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {

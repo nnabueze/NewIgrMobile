@@ -5,9 +5,9 @@ android {
     buildToolsVersion "26.0.0"
     defaultConfig {
         applicationId "com.ercasng.eze.igrmobile"
-        minSdkVersion 17
+        minSdkVersion 16
         targetSdkVersion 25
-        versionCode 2
+        versionCode 3
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -38,4 +38,8 @@ dependencies {
     compile 'com.miguelcatalan:materialsearchview:1.4.0'
     compile 'com.squareup.picasso:picasso:2.3.3'
     testCompile 'junit:junit:4.12'
+
+    // new libraries
+    compile 'com.daimajia.easing:library:2.0@aar'
+    compile 'com.daimajia.androidanimations:library:2.3@aar'
 }

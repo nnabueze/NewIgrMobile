@@ -309,7 +309,6 @@ public class Remittance extends AppCompatActivity {
         double num = Double.parseDouble(number);
         DecimalFormat money = new DecimalFormat("###,###,###,###");
         String formattedText = "₦" + money.format(num);
-
         return formattedText;
     }
 }

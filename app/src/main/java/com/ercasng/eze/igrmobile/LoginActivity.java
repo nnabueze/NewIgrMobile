@@ -31,6 +31,7 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.*;
 import com.android.volley.toolbox.Volley;
+import com.ercasng.eze.igrmobile.AnimationDir.MyAnimation;
 import com.ercasng.eze.igrmobile.model.Auth;
 import com.ercasng.eze.igrmobile.model.TokenModel;
 import com.ercasng.eze.igrmobile.parser.AuthParser;
@@ -56,6 +57,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
+        MyAnimation.animateEditText2(emailText);
+        MyAnimation.animateEditText2(passwordText);
+        MyAnimation.animateButton(loginButton);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override

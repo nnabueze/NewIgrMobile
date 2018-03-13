@@ -26,8 +26,8 @@
     android:layout_weight="2"
     android:id="@+id/text2"
     android:text="Title2"
-    android:textColor="@color/black"
-    android:textSize="14sp"
+    android:textColor="@color/bg_screen2"
+    android:textSize="18sp"
     android:gravity="center"
     android:layout_margin="7dp"/>
 
