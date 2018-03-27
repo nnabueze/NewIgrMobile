@@ -6,7 +6,7 @@
         android:title="Dashboard"
         android:icon="@drawable/dashboard"/>
     <item
-        android:title="MDA's"
+        android:title="MDA/LGA"
         android:checkable="true"
         android:id="@+id/mda"
         android:icon="@drawable/account"/>
@@ -21,7 +21,7 @@
         android:id="@+id/pos"
         android:icon="@drawable/card"/>
     <item
-        android:title="Ebills"
+        android:title="WEB"
         android:checkable="true"
         android:id="@+id/ebills"
         android:icon="@drawable/border"/>

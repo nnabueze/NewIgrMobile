@@ -12,10 +12,10 @@
         android:layout_margin="7dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="ID"
+        android:text="REMIT ID"
         android:textStyle="bold"
         android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:textSize="19sp" />
 
     <TextView
         android:layout_width="0dp"
@@ -26,7 +26,7 @@
         android:textStyle="bold"
         android:text="NAME"
         android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:textSize="19sp" />
 
     <TextView
         android:layout_width="0dp"
@@ -37,7 +37,7 @@
         android:gravity="center"
         android:text="AMOUNT"
         android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:textSize="19sp" />
 
     <TextView
         android:layout_width="0dp"
@@ -48,6 +48,6 @@
         android:gravity="center"
         android:text="STATUS"
         android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:textSize="19sp" />
 
 </LinearLayout>
