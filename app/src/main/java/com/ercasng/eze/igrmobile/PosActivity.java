@@ -72,10 +72,10 @@ public class PosActivity extends AppCompatActivity {
                 }
                 if (scrollRange + verticalOffset == 0) {
                     isShow = true;
-                    showOption(R.id.action_info);
+                    //showOption(R.id.action_info);
                 } else if (isShow) {
                     isShow = false;
-                    hideOption(R.id.action_info);
+                    //hideOption(R.id.action_info);
                 }
             }
         });

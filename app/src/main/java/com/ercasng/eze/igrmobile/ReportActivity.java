@@ -208,10 +208,10 @@ public class ReportActivity extends AppCompatActivity {
                 }
                 if (scrollRange + verticalOffset == 0) {
                     isShow = true;
-                    showOption(R.id.action_info);
+                    //showOption(R.id.action_info);
                 } else if (isShow) {
                     isShow = false;
-                    hideOption(R.id.action_info);
+                    //hideOption(R.id.action_info);
                 }
             }
         });
@@ -230,10 +230,10 @@ public class ReportActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_scrolling, menu);
 //        hideOption(R.id.action_info);
 
-        MenuItem item = menu.findItem(R.id.action_search);
-        searchView = (MaterialSearchView) findViewById(R.id.search_view);
-        searchView.setMenuItem(item);
-        searchQuery();
+        //MenuItem item = menu.findItem(R.id.action_search);
+        //searchView = (MaterialSearchView) findViewById(R.id.search_view);
+        //searchView.setMenuItem(item);
+        //searchQuery();
         return true;
     }
 
@@ -277,8 +277,8 @@ public class ReportActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
-        } else if (id == R.id.action_info) {
-            return true;
+//        } else if (id == R.id.action_info) {
+//            return true;
         }else if(id == R.id.action_logout){
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
             preferences.edit().clear().commit();
