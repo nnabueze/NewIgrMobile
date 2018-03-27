@@ -92,6 +92,7 @@ public class Remittance extends AppCompatActivity {
     private void makeCall() {
         final ProgressDialog progressDialog = new ProgressDialog(Remittance.this, R.style.Theme_AppCompat_Light_Dialog);
         progressDialog.setMessage("Loading...");
+        progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         StringRequest request = new StringRequest(Request.Method.POST, Utility.REMITTANCE_URL,

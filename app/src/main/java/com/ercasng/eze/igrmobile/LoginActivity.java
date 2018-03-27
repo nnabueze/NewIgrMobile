@@ -137,6 +137,7 @@ public class LoginActivity extends AppCompatActivity {
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this, R.style.Theme_AppCompat_Light_Dialog);
         progressDialog.setMessage("Authenticating...");
+        progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
         StringRequest request = new StringRequest(Request.Method.POST, Utility.NEW_LOGIN_TWO_URL,
 
