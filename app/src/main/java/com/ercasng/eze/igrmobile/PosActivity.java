@@ -235,7 +235,7 @@ public class PosActivity extends AppCompatActivity {
             //% increase = Increase ÷ Original Number × 100
             double percentageIncrease = increase / yesterdayAmount* 100;
 
-            indicator3.setText(String.format("%.2f", percentageIncrease)+"%");
+            indicator3.setText(String.format("%.1f", percentageIncrease)+"%");
             indicator3.setVisibility(View.VISIBLE);
             indicator3.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_drop_up_black_18dp, 0, 0, 0);
             indicator3.setTextColor(Color.parseColor("#2E7D32"));
@@ -248,7 +248,7 @@ public class PosActivity extends AppCompatActivity {
             //% increase = Increase ÷ Original Number × 100
             double percentageDecrease = decrease / yesterdayAmount * 100;
 
-            indicator3.setText(String.format("%.2f", percentageDecrease)+"%");
+            indicator3.setText(String.format("%.1f", percentageDecrease)+"%");
             indicator3.setVisibility(View.VISIBLE);
             indicator3.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_drop_down_black_18dp, 0, 0, 0);
             indicator3.setTextColor(Color.parseColor("#C62828"));
@@ -266,7 +266,7 @@ public class PosActivity extends AppCompatActivity {
             //% increase = Increase ÷ Original Number × 100
             double percentageIncrease = increase / currentAmount* 100;
 
-            indicator2.setText(String.format("%.2f", percentageIncrease)+"%");
+            indicator2.setText(String.format("%.1f", percentageIncrease)+"%");
             indicator2.setVisibility(View.VISIBLE);
             indicator2.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_drop_up_black_18dp, 0, 0, 0);
             indicator2.setTextColor(Color.parseColor("#2E7D32"));
@@ -279,7 +279,7 @@ public class PosActivity extends AppCompatActivity {
             //% increase = Increase ÷ Original Number × 100
             double percentageDecrease = decrease / currentAmount * 100;
 
-            indicator2.setText(String.format("%.2f", percentageDecrease)+"%");
+            indicator2.setText(String.format("%.1f", percentageDecrease)+"%");
             indicator2.setVisibility(View.VISIBLE);
             indicator2.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_drop_down_black_18dp, 0, 0, 0);
             indicator2.setTextColor(Color.parseColor("#C62828"));
@@ -297,7 +297,7 @@ public class PosActivity extends AppCompatActivity {
             //% increase = Increase ÷ Original Number × 100
             double percentageIncrease = increase / lastAmount* 100;
 
-            indicator.setText(String.format("%.2f", percentageIncrease)+"%");
+            indicator.setText(String.format("%.1f", percentageIncrease)+"%");
             indicator.setVisibility(View.VISIBLE);
             indicator.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_drop_up_black_18dp, 0, 0, 0);
             indicator.setTextColor(Color.parseColor("#2E7D32"));
@@ -310,7 +310,7 @@ public class PosActivity extends AppCompatActivity {
             //% increase = Increase ÷ Original Number × 100
             double percentageDecrease = decrease / lastAmount * 100;
 
-            indicator.setText(String.format("%.2f", percentageDecrease)+"%");
+            indicator.setText(String.format("%.1f", percentageDecrease)+"%");
             indicator.setVisibility(View.VISIBLE);
             indicator.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_arrow_drop_down_black_18dp, 0, 0, 0);
             indicator.setTextColor(Color.parseColor("#C62828"));

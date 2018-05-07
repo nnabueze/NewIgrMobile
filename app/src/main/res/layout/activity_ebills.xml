@@ -110,7 +110,7 @@
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-light"
                             android:gravity="center|bottom"
-                            android:text="ebills collected"
+                            android:text="web collected"
                             android:textColor="@color/colorPrimary"
                             android:textSize="8sp"
                             android:textStyle="italic" />
@@ -170,7 +170,7 @@
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-light"
                             android:gravity="center|bottom"
-                            android:text="ebills collected"
+                            android:text="web collected"
                             android:textColor="@color/colorPrimary"
                             android:textSize="8sp"
                             android:textStyle="italic" />
@@ -248,7 +248,7 @@
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-light"
                             android:gravity="center|bottom"
-                            android:text="ebills collected"
+                            android:text="web collected"
                             android:textColor="@color/colorPrimary"
                             android:textSize="8sp"
                             android:textStyle="italic" />
@@ -308,7 +308,7 @@
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-light"
                             android:gravity="center|bottom"
-                            android:text="ebills collected"
+                            android:text="web collected"
                             android:textColor="@color/colorPrimary"
                             android:textSize="8sp"
                             android:textStyle="italic" />
